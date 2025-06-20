@@ -4,11 +4,11 @@
     "slug": "Jamb",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/ee74eea0-a591-443a-bfe7-84c3717b931f.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/ee74eea0-a591-443a-bfe7-84c3717b931f.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,13 +17,19 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/ee74eea0-a591-443a-bfe7-84c3717b931f.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.promiseobi.Jamb"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/ee74eea0-a591-443a-bfe7-84c3717b931f.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "78fc9d28-d3ef-4efb-8110-e12da825bd78"
+      }
     }
   }
 }
