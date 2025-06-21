@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Jamb",
-    "slug": "Jamb",
+    "slug": "jamb-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/ee74eea0-a591-443a-bfe7-84c3717b931f.png",
@@ -28,8 +28,9 @@
     },
     "extra": {
       "eas": {
-        "projectId": "78fc9d28-d3ef-4efb-8110-e12da825bd78"
+        "projectId": "b2e322a0-3e01-4b09-a504-c9e5b639ed12"
       }
-    }
+    },
+    "owner": "promiseobi"
   }
 }

@@ -9,13 +9,15 @@ export default function Dashboard({ navigation }) {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View className='flex-row gap-4 justify-between'>
           <View>
-            <Feather name="menu" size={28} color="black" />
+            <TouchableOpacity onPress={() => navigation.openDrawer()}>
+              <Feather name="menu" size={28} color="black" />
+            </TouchableOpacity>
           </View>
           <View>
             <Feather name="user" size={28} color="black" />
           </View>
         </View>
-        {/* Header */}
+
         <View className="mb-6 flex gap-4 mt-4">
           <Text className="text-3xl font-bold text-gray-800">Welcome, Promise 👋</Text>
           <Text className="text-gray-500 text-base mt-1">Here’s your JAMB dashboard</Text>
@@ -23,25 +25,18 @@ export default function Dashboard({ navigation }) {
 
         {/* Stats Card */}
         <View className="bg-white p-4 rounded-2xl shadow mb-6">
-          <Text className="text-gray-700 font-semibold mb-2">Your Score</Text>
-          <Text className="text-4xl font-bold text-blue-600">276</Text>
-          <View className="flex-row justify-between mt-4">
-            <View>
-              <Text className="text-gray-600">English</Text>
-              <Text className="font-bold">70</Text>
-            </View>
-            <View>
-              <Text className="text-gray-600">Maths</Text>
-              <Text className="font-bold">68</Text>
-            </View>
-            <View>
-              <Text className="text-gray-600">Physics</Text>
-              <Text className="font-bold">69</Text>
-            </View>
-            <View>
-              <Text className="text-gray-600">Chemistry</Text>
-              <Text className="font-bold">69</Text>
-            </View>
+          <Text className='text-2xl flex justify-center items-center font-bold'>Past Questions and Answers</Text>
+          <View className='pt-2'>
+            <Text className='text-2xl'>Physics</Text>
+            <Text className='text-2xl'>Chemistry</Text>
+            <Text className='text-2xl'>Mathematics</Text>
+            <Text className='text-2xl'>Agriculture</Text>
+            <Text className='text-2xl'>Biology</Text>
+            <Text className='text-2xl'>Futher-Maths</Text>
+            <Text className='text-2xl'>Crs</Text>
+            <Text className='text-2xl'>Fine-Art</Text>
+            <Text className='text-2xl'>Geography</Text>
+            <Text className='text-2xl'>Social-Studies</Text>
           </View>
         </View>
 
@@ -53,10 +48,6 @@ export default function Dashboard({ navigation }) {
 
           <TouchableOpacity className="bg-green-600 py-4 rounded-2xl shadow">
             <Text className="text-white text-center font-semibold text-lg">Register for Next Exam</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => navigation.navigate('Signin')} className="bg-red-500 py-4 rounded-2xl shadow">
-            <Text className="text-white text-center font-semibold text-lg">Logout</Text>
           </TouchableOpacity>
         </View>
 
