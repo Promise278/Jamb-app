@@ -1,9 +1,34 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Alert, SafeAreaView } from 'react-native';
 import Signin from './Signin';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 
 export default function Signup({ navigation }) {
+
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+   const handleSubmit = async () => {
+      if(!name || !email || !password) {
+        alert("Input must not be empty")
+        return
+      }
+      try {
+        await AsyncStorage.setItem('userEmail', email);
+        await AsyncStorage.setItem('userPassword', password);
+
+        alert(`User ${name} Registered Successfully`);
+        navigation.navigate('Signin');
+      } catch (error) {
+        alert("Error saving user data");
+        console.log(error);
+      }
+   }
+
+  
 
   return (
     <SafeAreaView>
@@ -13,20 +38,26 @@ export default function Signup({ navigation }) {
         <TextInput
           className="border border-gray-400 p-3 mb-3 rounded mt-4"
           placeholder="Full Name"
+          value={name}
+          onChangeText={setName}
         />
         <TextInput
           className="border border-gray-400 p-3 mb-3 rounded"
           placeholder="Email"
           keyboardType="email-address"
+          value={email}
+          onChangeText={setEmail}
         />
         <TextInput
           className="border border-gray-400 p-3 mb-3 rounded"
           placeholder="Password"
+          value={password}
+          onChangeText={setPassword}
           secureTextEntry
         />
 
 
-        <TouchableOpacity onPress={() => Alert.alert("Registration Complete", "Thank you for registering!") || navigation.navigate('Signin')} className="bg-blue-600 p-3 rounded mt-2">
+        <TouchableOpacity onPress={handleSubmit} className="bg-blue-600 p-3 rounded mt-2">
           <Text className="text-white text-center font-semibold">Create Account</Text>
         </TouchableOpacity>
 

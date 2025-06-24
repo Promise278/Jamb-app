@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Feather } from '@expo/vector-icons'; 
+import { FlatList } from 'react-native-gesture-handler';
 
 export default function Dashboard({ navigation }) {
   return (
@@ -23,21 +24,12 @@ export default function Dashboard({ navigation }) {
           <Text className="text-gray-500 text-base mt-1">Here’s your JAMB dashboard</Text>
         </View>
 
-        {/* Stats Card */}
         <View className="bg-white p-4 rounded-2xl shadow mb-6">
-          <Text className='text-2xl flex justify-center items-center font-bold'>Past Questions and Answers</Text>
-          <View className='pt-2'>
-            <Text className='text-2xl'>Physics</Text>
-            <Text className='text-2xl'>Chemistry</Text>
-            <Text className='text-2xl'>Mathematics</Text>
-            <Text className='text-2xl'>Agriculture</Text>
-            <Text className='text-2xl'>Biology</Text>
-            <Text className='text-2xl'>Futher-Maths</Text>
-            <Text className='text-2xl'>Crs</Text>
-            <Text className='text-2xl'>Fine-Art</Text>
-            <Text className='text-2xl'>Geography</Text>
-            <Text className='text-2xl'>Social-Studies</Text>
-          </View>
+          <FlatList>
+            <View className="bg-slate-500 h-56 w-56">
+                <Text>hellow</Text>
+            </View>
+          </FlatList>
         </View>
 
         {/* Actions */}

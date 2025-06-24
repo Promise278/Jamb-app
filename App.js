@@ -10,6 +10,7 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
+    <>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Signup" screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Signup" component={Signup} />
@@ -17,6 +18,6 @@ export default function App() {
           <Stack.Screen name="Dashboard" component={Drawer} />
         </Stack.Navigator>
       </NavigationContainer>
-    // </View>
+    </>
   );
 }
