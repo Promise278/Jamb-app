@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Feather } from '@expo/vector-icons'; 
 import { FlatList } from 'react-native-gesture-handler';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Dashboard({ navigation }) {
+  const [name, setName] = useState('');
+
+  useEffect(() => {
+    const loadName = async () => {
+      const storedName = await AsyncStorage.getItem('userName');
+      if (storedName) setName(storedName);
+    };
+    loadName();
+  }, []);
   return (
     <SafeAreaView className="flex-1 bg-gray-100 px-6 pt-6">
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -20,7 +30,7 @@ export default function Dashboard({ navigation }) {
         </View>
 
         <View className="mb-6 flex gap-4 mt-4">
-          <Text className="text-3xl font-bold text-gray-800">Welcome, Promise 👋</Text>
+          <Text className="text-3xl font-bold text-gray-800">Welcome, {name} 👋</Text>
           <Text className="text-gray-500 text-base mt-1">Here’s your JAMB dashboard</Text>
         </View>
 

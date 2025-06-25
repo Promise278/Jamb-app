@@ -17,6 +17,7 @@ export default function Signup({ navigation }) {
         return
       }
       try {
+        await AsyncStorage.setItem('userName', name);
         await AsyncStorage.setItem('userEmail', email);
         await AsyncStorage.setItem('userPassword', password);
 
