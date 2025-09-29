@@ -1,35 +1,37 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Alert, SafeAreaView } from 'react-native';
-import Signin from './Signin';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-
+import { registerUser } from '../services/api';
 
 export default function Signup({ navigation }) {
 
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-   const handleSubmit = async () => {
-      if(!name || !email || !password) {
-        alert("Input must not be empty")
-        return
-      }
-      try {
-        await AsyncStorage.setItem('userName', name);
-        await AsyncStorage.setItem('userEmail', email);
-        await AsyncStorage.setItem('userPassword', password);
+  const handleSubmit = async () => {
+    if (!name || !email || !password) {
+      alert("Input must not be empty");
+      return;
+    }
 
-        alert(`User ${name} Registered Successfully`);
+    try {
+      const userData = { firstname: name, lastname: '', email, password }; // adapt lastname if needed
+      const response = await registerUser(userData);
+
+      if (response.token) {
+        await AsyncStorage.setItem('userToken', response.token);
+        await AsyncStorage.setItem('userName', response.firstname);
+        alert(`User ${response.firstname} Registered Successfully`);
         navigation.navigate('Signin');
-      } catch (error) {
-        alert("Error saving user data");
-        console.log(error);
+      } else {
+        alert(response.message || "Registration failed");
       }
-   }
-
-  
+    } catch (error) {
+      console.log(error);
+      alert("Error registering user");
+    }
+  };
 
   return (
     <SafeAreaView>
@@ -57,13 +59,17 @@ export default function Signup({ navigation }) {
           secureTextEntry
         />
 
-
         <TouchableOpacity onPress={handleSubmit} className="bg-blue-600 p-3 rounded mt-2">
           <Text className="text-white text-center font-semibold">Create Account</Text>
         </TouchableOpacity>
 
-        <Text className="pt-3 pl-8">Already have an Account? <Text onPress={() => navigation.navigate('Signin')} className="text-blue-600 font-bold">Sign in</Text></Text>
+        <Text className="pt-3 pl-8">
+          Already have an Account?{' '}
+          <Text onPress={() => navigation.navigate('Signin')} className="text-blue-600 font-bold">
+            Sign in
+          </Text>
+        </Text>
       </View>
     </SafeAreaView>
-  )
+  );
 }
